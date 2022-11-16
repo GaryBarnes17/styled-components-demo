@@ -1,5 +1,3 @@
 # Styled Components Demo
 
-## Asurion Academy
-
-### Gary Barnes
+## Asurion Academy - Gary Barnes
