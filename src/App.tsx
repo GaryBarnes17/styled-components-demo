@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import { Button } from "@soluto-private/mx-asurion-ui-react";
 
-const StyledText = styled.h1`
+const StyledButton = styled(Button)`
   color: palevioletred;
 `;
 
 const App = () => {
-  return <StyledText>Hello World</StyledText>;
+  return (
+    <StyledButton variant="outline" onClick={() => console.log("clicked")}>
+      Click me
+    </StyledButton>
+  );
 };
 
 export default App;
