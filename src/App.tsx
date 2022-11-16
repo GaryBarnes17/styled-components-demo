@@ -1,5 +1,11 @@
-function App() {
-  return <h1>Hello World</h1>;
-}
+import styled from "styled-components";
+
+const StyledText = styled.h1`
+  color: palevioletred;
+`;
+
+const App = () => {
+  return <StyledText>Hello World</StyledText>;
+};
 
 export default App;
