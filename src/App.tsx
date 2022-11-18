@@ -7,12 +7,15 @@ import {
   Dropdown,
   RadioSelectionCard,
   Text,
+  TextField,
 } from "@soluto-private/mx-asurion-ui-react";
 
 // other things to include - meal of day, fav food, then section to describe favorite meal and submit
 
-const StyledButton = styled(Button).attrs({ variant: "outline" })`
-  color: palevioletred;
+const StyledButton = styled(Button).attrs({
+  variant: "outline",
+})<{ isSubmitted: boolean }>`
+  color: ${(props) => (props.isSubmitted ? "#3EB489" : "palevioletred")};
 `;
 
 const PageContainer = styled.div`
@@ -43,15 +46,19 @@ const Row = styled.div`
   gap: 1rem;
 `;
 
-const StyledDeviceCard = styled(DeviceCard).attrs({ type: "selection" })`
-  background-color: paleturquoise;
+const handleBackground = (val1: string, val2: string) => {
+  if (val1 && val2) return "#3EB489";
+  else if (val1 || val2) return "yellow";
+  else return "palevioletred";
+};
+
+const WorkCard = styled(DeviceCard)`
+  background: ${(props) => handleBackground(props.location, props.preference)};
 `;
+const FoodCard = styled(DeviceCard)``;
+const TravelCard = styled(DeviceCard)``;
 
 const SectionHeader = styled(Text).attrs({ size: 3, weight: "heavy" })``;
-
-const handleClick = () => {
-  console.log("clicked");
-};
 
 const workOptions = [
   { name: "Nashville", value: "Nashville" },
@@ -68,6 +75,10 @@ const App = () => {
   const [location, setLocation] = useState("");
   const [preference, setPreference] = useState("");
   const [iceCream, setIceCream] = useState("");
+  const [pizza, setPizza] = useState("");
+  const [dummy1, setDummy1] = useState("");
+  const [dummy2, setDummy2] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   return (
     <PageContainer>
       <Text size={8} weight="heavy" as="h1">
@@ -79,15 +90,17 @@ const App = () => {
         iconSrc="Smiley"
       />
       <Row>
-        <StyledDeviceCard iconSrc="SmartDoorBell" primary="Smart Doorbell" />
-        <StyledDeviceCard iconSrc="SmartSpeaker" primary="Smart Speaker" />
-        <StyledDeviceCard iconSrc="Printer" primary="Printer" />
-        <StyledDeviceCard iconSrc="GamingConsole" primary="Gaming Console" />
-        <StyledDeviceCard iconSrc="Printer" primary="Printer" />
-        <StyledDeviceCard iconSrc="GamingConsole" primary="Gaming Console" />
+        <WorkCard
+          location={location}
+          preference={preference}
+          iconSrc="Laptop"
+          primary="Work"
+        />
+        <FoodCard iconSrc="Stove" primary="Food" />
+        <TravelCard iconSrc="Share" primary="Travel" />
       </Row>
       <Row>
-        <SectionHeader>Work Prefrences</SectionHeader>
+        <SectionHeader>Work Preferences</SectionHeader>
       </Row>
       <Row>
         <Dropdown
@@ -135,9 +148,59 @@ const App = () => {
         >
           Strawberry
         </RadioSelectionCard>
+        <Text>Favorite Pizza Topping</Text>
+        <RadioSelectionCard
+          name="pizza"
+          onChange={(e) => setPizza(e.target.value)}
+          showCircle
+          value="cheese"
+          checked={pizza === "cheese"}
+        >
+          Cheese
+        </RadioSelectionCard>
+        <RadioSelectionCard
+          name="pizza"
+          onChange={(e) => setPizza(e.target.value)}
+          showCircle
+          value="Pepperoni"
+          checked={pizza === "Pepperoni"}
+        >
+          Pepperoni
+        </RadioSelectionCard>
+        <RadioSelectionCard
+          name="pizza"
+          onChange={(e) => setPizza(e.target.value)}
+          showCircle
+          value="Veggies"
+          checked={pizza === "veggies"}
+        >
+          Veggies
+        </RadioSelectionCard>
       </Row>
       <Row>
-        <StyledButton onClick={handleClick}>Click me to Submit</StyledButton>
+        <SectionHeader>Travel Preferences</SectionHeader>
+      </Row>
+      <Row>
+        <TextField
+          label="Dummy1"
+          helperText="Helper text or validation goes here"
+          value={dummy1}
+          onChange={(e) => setDummy1(e.target.value)}
+        />
+        <TextField
+          label="Dummy2"
+          helperText="Helper text or validation goes here"
+          value={dummy2}
+          onChange={(e) => setDummy2(e.target.value)}
+        />
+      </Row>
+      <Row>
+        <StyledButton
+          isSubmitted={isSubmitted}
+          onClick={() => setIsSubmitted(!isSubmitted)}
+        >
+          {isSubmitted ? "Un-Submit" : "Submit"}
+        </StyledButton>
       </Row>
     </PageContainer>
   );
