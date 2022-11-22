@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@soluto-private/mx-asurion-ui-react";
 
-// other things to include - meal of day, fav food, then section to describe favorite meal and submit
+// TODO - fix text fields (or replace), center fields, fill out travel questions
 
 const StyledButton = styled(Button).attrs({
   variant: "outline",
@@ -52,11 +52,9 @@ const handleBackground = (val1: string, val2: string) => {
   else return "palevioletred";
 };
 
-const WorkCard = styled(DeviceCard)`
-  background: ${(props) => handleBackground(props.location, props.preference)};
+const FormCard = styled(DeviceCard)`
+  background: ${(props) => handleBackground(props.value1, props.value2)};
 `;
-const FoodCard = styled(DeviceCard)``;
-const TravelCard = styled(DeviceCard)``;
 
 const SectionHeader = styled(Text).attrs({ size: 3, weight: "heavy" })``;
 
@@ -85,19 +83,29 @@ const App = () => {
         This is a Form
       </Text>
       <StyledCallout
-        content="This is a nonsensical page complete with a form. This is not up to par with Asurion design standards, and you should not design things like this. Here are some devices "
+        content="This is a nonsensical page complete with a form. This is not up to par with Asurion design standards, and you should not design things like this"
         heading="Hello, Everyone!"
         iconSrc="Smiley"
       />
       <Row>
-        <WorkCard
-          location={location}
-          preference={preference}
+        <FormCard
+          value1={location}
+          value2={preference}
           iconSrc="Laptop"
           primary="Work"
         />
-        <FoodCard iconSrc="Stove" primary="Food" />
-        <TravelCard iconSrc="Share" primary="Travel" />
+        <FormCard
+          value1={pizza}
+          value2={iceCream}
+          iconSrc="Stove"
+          primary="Food"
+        />
+        <FormCard
+          iconSrc="Share"
+          primary="Travel"
+          value1={dummy1}
+          value2={dummy2}
+        />
       </Row>
       <Row>
         <SectionHeader>Work Preferences</SectionHeader>
@@ -182,13 +190,13 @@ const App = () => {
       </Row>
       <Row>
         <TextField
-          label="Dummy1"
+          label="Where was your most recent vacation?"
           helperText="Helper text or validation goes here"
           value={dummy1}
           onChange={(e) => setDummy1(e.target.value)}
         />
         <TextField
-          label="Dummy2"
+          label="Where is the next vacation you have planned?"
           helperText="Helper text or validation goes here"
           value={dummy2}
           onChange={(e) => setDummy2(e.target.value)}
