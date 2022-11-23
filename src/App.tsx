@@ -7,10 +7,10 @@ import {
   Dropdown,
   RadioSelectionCard,
   Text,
-  TextField,
+  Textarea,
 } from "@soluto-private/mx-asurion-ui-react";
 
-// TODO - fix text fields (or replace), center fields, fill out travel questions
+// Styled-Components
 
 const StyledButton = styled(Button).attrs({
   variant: "outline",
@@ -18,7 +18,7 @@ const StyledButton = styled(Button).attrs({
   color: ${(props) => (props.isSubmitted ? "#3EB489" : "palevioletred")};
 `;
 
-const PageContainer = styled.div`
+const StyledForm = styled.form`
   margin-left: 1rem;
   margin-right: 1rem;
   display: flex;
@@ -58,6 +58,12 @@ const FormCard = styled(DeviceCard)`
 
 const SectionHeader = styled(Text).attrs({ size: 3, weight: "heavy" })``;
 
+const StyledTextarea = styled(Textarea)`
+  min-width: 500px;
+`;
+
+// Radio Group Options
+
 const workOptions = [
   { name: "Nashville", value: "Nashville" },
   { name: "Sterling", value: "Sterling" },
@@ -70,15 +76,29 @@ const preferenceOptions = [
 ];
 
 const App = () => {
-  const [location, setLocation] = useState("");
-  const [preference, setPreference] = useState("");
-  const [iceCream, setIceCream] = useState("");
-  const [pizza, setPizza] = useState("");
-  const [dummy1, setDummy1] = useState("");
-  const [dummy2, setDummy2] = useState("");
+  // form values
+  const [workLocation, setWorkLocation] = useState("");
+  const [workPreference, setWorkPreference] = useState("");
+  const [favIceCream, setFavIceCream] = useState("");
+  const [favPizza, setFavPizza] = useState("");
+  const [recentVacation, setRecentVacation] = useState("");
+  const [favoriteVacation, setFavoriteVacation] = useState("");
+
+  // form state
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    alert(
+      !isSubmitted
+        ? "Your form has been submitted!"
+        : "Your form has been unsubmitted!"
+    );
+    setIsSubmitted(!isSubmitted);
+  };
+
   return (
-    <PageContainer>
+    <StyledForm onSubmit={handleSubmit}>
       <Text size={8} weight="heavy" as="h1">
         This is a Form
       </Text>
@@ -89,22 +109,22 @@ const App = () => {
       />
       <Row>
         <FormCard
-          value1={location}
-          value2={preference}
+          value1={workLocation}
+          value2={workPreference}
           iconSrc="Laptop"
           primary="Work"
         />
         <FormCard
-          value1={pizza}
-          value2={iceCream}
+          value1={favPizza}
+          value2={favIceCream}
           iconSrc="Stove"
           primary="Food"
         />
         <FormCard
           iconSrc="Share"
           primary="Travel"
-          value1={dummy1}
-          value2={dummy2}
+          value1={recentVacation}
+          value2={favoriteVacation}
         />
       </Row>
       <Row>
@@ -114,14 +134,14 @@ const App = () => {
         <Dropdown
           label="Where do you work from?"
           options={workOptions}
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
+          value={workLocation}
+          onChange={(e) => setWorkLocation(e.target.value)}
         />
         <Dropdown
           label="Preferred work location?"
           options={preferenceOptions}
-          value={preference}
-          onChange={(e) => setPreference(e.target.value)}
+          value={workPreference}
+          onChange={(e) => setWorkPreference(e.target.value)}
         />
       </Row>
       <Row>
@@ -130,57 +150,57 @@ const App = () => {
       <Row>
         <Text>Favorite Ice Cream</Text>
         <RadioSelectionCard
-          name="iceCream"
-          onChange={(e) => setIceCream(e.target.value)}
+          name="favIceCream"
+          onChange={(e) => setFavIceCream(e.target.value)}
           showCircle
           value="vanilla"
-          checked={iceCream === "vanilla"}
+          checked={favIceCream === "vanilla"}
         >
           Vanilla
         </RadioSelectionCard>
         <RadioSelectionCard
-          name="iceCream"
-          onChange={(e) => setIceCream(e.target.value)}
+          name="favIceCream"
+          onChange={(e) => setFavIceCream(e.target.value)}
           showCircle
           value="chocolate"
-          checked={iceCream === "chocolate"}
+          checked={favIceCream === "chocolate"}
         >
           Chocolate
         </RadioSelectionCard>
         <RadioSelectionCard
-          name="iceCream"
-          onChange={(e) => setIceCream(e.target.value)}
+          name="favIceCream"
+          onChange={(e) => setFavIceCream(e.target.value)}
           showCircle
           value="strawberry"
-          checked={iceCream === "strawberry"}
+          checked={favIceCream === "strawberry"}
         >
           Strawberry
         </RadioSelectionCard>
         <Text>Favorite Pizza Topping</Text>
         <RadioSelectionCard
-          name="pizza"
-          onChange={(e) => setPizza(e.target.value)}
+          name="favPizza"
+          onChange={(e) => setFavPizza(e.target.value)}
           showCircle
           value="cheese"
-          checked={pizza === "cheese"}
+          checked={favPizza === "cheese"}
         >
           Cheese
         </RadioSelectionCard>
         <RadioSelectionCard
-          name="pizza"
-          onChange={(e) => setPizza(e.target.value)}
+          name="favPizza"
+          onChange={(e) => setFavPizza(e.target.value)}
           showCircle
           value="Pepperoni"
-          checked={pizza === "Pepperoni"}
+          checked={favPizza === "Pepperoni"}
         >
           Pepperoni
         </RadioSelectionCard>
         <RadioSelectionCard
-          name="pizza"
-          onChange={(e) => setPizza(e.target.value)}
+          name="favPizza"
+          onChange={(e) => setFavPizza(e.target.value)}
           showCircle
           value="Veggies"
-          checked={pizza === "veggies"}
+          checked={favPizza === "veggies"}
         >
           Veggies
         </RadioSelectionCard>
@@ -189,28 +209,25 @@ const App = () => {
         <SectionHeader>Travel Preferences</SectionHeader>
       </Row>
       <Row>
-        <TextField
-          label="Where was your most recent vacation?"
+        <StyledTextarea
+          label="What was the destination of your most recent vacation, and why?"
           helperText="Helper text or validation goes here"
-          value={dummy1}
-          onChange={(e) => setDummy1(e.target.value)}
+          value={recentVacation}
+          onChange={(e) => setRecentVacation(e.target.value)}
         />
-        <TextField
-          label="Where is the next vacation you have planned?"
+        <StyledTextarea
+          label="Where and when is the next vacation you have planned?"
           helperText="Helper text or validation goes here"
-          value={dummy2}
-          onChange={(e) => setDummy2(e.target.value)}
+          value={favoriteVacation}
+          onChange={(e) => setFavoriteVacation(e.target.value)}
         />
       </Row>
       <Row>
-        <StyledButton
-          isSubmitted={isSubmitted}
-          onClick={() => setIsSubmitted(!isSubmitted)}
-        >
+        <StyledButton type="submit" isSubmitted={isSubmitted}>
           {isSubmitted ? "Un-Submit" : "Submit"}
         </StyledButton>
       </Row>
-    </PageContainer>
+    </StyledForm>
   );
 };
 
