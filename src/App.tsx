@@ -10,14 +10,19 @@ import {
   Textarea,
 } from "@soluto-private/mx-asurion-ui-react";
 
-// Styled-Components
+// Radio Group Options
+const workOptions = [
+  { name: "Nashville", value: "Nashville" },
+  { name: "Sterling", value: "Sterling" },
+  { name: "Remote", value: "Remote" },
+];
+const preferenceOptions = [
+  { name: "In-Person", value: "In-Person" },
+  { name: "Hybrid", value: "Hybrid" },
+  { name: "Remote", value: "Remote" },
+];
 
-const StyledButton = styled(Button).attrs({
-  variant: "outline",
-})<{ isSubmitted: boolean }>`
-  color: ${(props) => (props.isSubmitted ? "#3EB489" : "palevioletred")};
-`;
-
+// Form Styles - do not edit
 const StyledForm = styled.form`
   margin-left: 1rem;
   margin-right: 1rem;
@@ -34,10 +39,6 @@ const StyledForm = styled.form`
   }
 `;
 
-const StyledCallout = styled(Callout)`
-  background-color: papayawhip;
-`;
-
 const Row = styled.div`
   display: flex;
   flex-direction: row;
@@ -46,34 +47,17 @@ const Row = styled.div`
   gap: 1rem;
 `;
 
-const handleBackground = (val1: string, val2: string) => {
-  if (val1 && val2) return "#3EB489";
-  else if (val1 || val2) return "yellow";
-  else return "palevioletred";
-};
-
-const FormCard = styled(DeviceCard)`
-  background: ${(props) => handleBackground(props.value1, props.value2)};
-`;
-
 const SectionHeader = styled(Text).attrs({ size: 3, weight: "heavy" })``;
 
 const StyledTextarea = styled(Textarea)`
   min-width: 500px;
 `;
 
-// Radio Group Options
+// Additional Styles - Edit These
 
-const workOptions = [
-  { name: "Nashville", value: "Nashville" },
-  { name: "Sterling", value: "Sterling" },
-  { name: "Remote", value: "Remote" },
-];
-const preferenceOptions = [
-  { name: "In-Person", value: "In-Person" },
-  { name: "Hybrid", value: "Hybrid" },
-  { name: "Remote", value: "Remote" },
-];
+const StyledButton = styled(Button)``;
+const StyledCallout = styled(Callout)``;
+const FormCard = styled(DeviceCard)``;
 
 const App = () => {
   // form values
@@ -223,7 +207,7 @@ const App = () => {
         />
       </Row>
       <Row>
-        <StyledButton type="submit" isSubmitted={isSubmitted}>
+        <StyledButton type="submit">
           {isSubmitted ? "Un-Submit" : "Submit"}
         </StyledButton>
       </Row>
