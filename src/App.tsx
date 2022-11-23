@@ -207,7 +207,7 @@ const App = () => {
         />
       </Row>
       <Row>
-        <StyledButton type="submit">
+        <StyledButton variant="outline" type="submit">
           {isSubmitted ? "Un-Submit" : "Submit"}
         </StyledButton>
       </Row>
