@@ -12,9 +12,7 @@ import {
 
 // Styled-Components
 
-const StyledButton = styled(Button).attrs({
-  variant: "outline",
-})<{ isSubmitted: boolean }>`
+const StyledButton = styled(Button)<{ isSubmitted: boolean }>`
   color: ${(props) => (props.isSubmitted ? "#3EB489" : "palevioletred")};
 `;
 
@@ -34,7 +32,7 @@ const StyledForm = styled.form`
   }
 `;
 
-const StyledCallout = styled(Callout)`
+const StyledCallout = styled(Callout).attrs({ iconSrc: "Smiley" })`
   background-color: papayawhip;
 `;
 
@@ -105,7 +103,6 @@ const App = () => {
       <StyledCallout
         content="This is a nonsensical page complete with a form. This is not up to par with Asurion design standards, and you should not design things like this"
         heading="Hello, Everyone!"
-        iconSrc="Smiley"
       />
       <Row>
         <FormCard
@@ -223,7 +220,7 @@ const App = () => {
         />
       </Row>
       <Row>
-        <StyledButton type="submit" isSubmitted={isSubmitted}>
+        <StyledButton variant="outline" type="submit" isSubmitted={isSubmitted}>
           {isSubmitted ? "Un-Submit" : "Submit"}
         </StyledButton>
       </Row>
