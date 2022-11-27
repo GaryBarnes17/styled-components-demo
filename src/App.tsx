@@ -55,10 +55,6 @@ const StyledTextarea = styled(Textarea)`
 
 // Additional Styles - Edit These
 
-const StyledButton = styled(Button)``;
-const StyledCallout = styled(Callout)``;
-const FormCard = styled(DeviceCard)``;
-
 const App = () => {
   // form values
   const [workLocation, setWorkLocation] = useState("");
@@ -86,30 +82,15 @@ const App = () => {
       <Text size={8} weight="heavy" as="h1">
         This is a Form
       </Text>
-      <StyledCallout
+      <Callout
         content="This is a nonsensical page complete with a form. This is not up to par with Asurion design standards, and you should not design things like this"
         heading="Hello, Everyone!"
         iconSrc="Smiley"
       />
       <Row>
-        <FormCard
-          value1={workLocation}
-          value2={workPreference}
-          iconSrc="Laptop"
-          primary="Work"
-        />
-        <FormCard
-          value1={favPizza}
-          value2={favIceCream}
-          iconSrc="Stove"
-          primary="Food"
-        />
-        <FormCard
-          iconSrc="Share"
-          primary="Travel"
-          value1={recentVacation}
-          value2={favoriteVacation}
-        />
+        <DeviceCard iconSrc="Laptop" primary="Work" />
+        <DeviceCard iconSrc="Stove" primary="Food" />
+        <DeviceCard iconSrc="Share" primary="Travel" />
       </Row>
       <Row>
         <SectionHeader>Work Preferences</SectionHeader>
@@ -207,9 +188,9 @@ const App = () => {
         />
       </Row>
       <Row>
-        <StyledButton variant="outline" type="submit">
+        <Button variant="outline" type="submit">
           {isSubmitted ? "Un-Submit" : "Submit"}
-        </StyledButton>
+        </Button>
       </Row>
     </StyledForm>
   );
