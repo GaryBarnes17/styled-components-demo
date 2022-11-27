@@ -7,64 +7,17 @@ import {
   Dropdown,
   RadioSelectionCard,
   Text,
-  Textarea,
 } from "@soluto-private/mx-asurion-ui-react";
-
-// Radio Group Options
-const workOptions = [
-  { name: "Nashville", value: "Nashville" },
-  { name: "Sterling", value: "Sterling" },
-  { name: "Remote", value: "Remote" },
-];
-const preferenceOptions = [
-  { name: "In-Person", value: "In-Person" },
-  { name: "Hybrid", value: "Hybrid" },
-  { name: "Remote", value: "Remote" },
-];
-
-// Form Styles - do not edit
-const StyledForm = styled.form`
-  margin-left: 1rem;
-  margin-right: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media (min-width: 1056px) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1024px;
-  }
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  gap: 1rem;
-`;
-
-const SectionHeader = styled(Text).attrs({ size: 3, weight: "heavy" })``;
-
-const StyledTextarea = styled(Textarea)`
-  min-width: 500px;
-`;
-
-// Additional Styles - Edit These
+import { workOptions, preferenceOptions } from "./data";
+import { StyledForm, Row, SectionHeader, StyledTextarea } from "./elements";
 
 const App = () => {
-  // form values
   const [workLocation, setWorkLocation] = useState("");
   const [workPreference, setWorkPreference] = useState("");
   const [favIceCream, setFavIceCream] = useState("");
   const [favPizza, setFavPizza] = useState("");
   const [recentVacation, setRecentVacation] = useState("");
   const [favoriteVacation, setFavoriteVacation] = useState("");
-
-  // form state
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
