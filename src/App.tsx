@@ -38,7 +38,6 @@ const App = () => {
       <Callout
         content="This is a nonsensical page complete with a form. This is not up to par with Asurion design standards, and you should not design things like this"
         heading="Hello, Everyone!"
-        iconSrc="Smiley"
       />
       <Row>
         <DeviceCard iconSrc="Laptop" primary="Work" />
@@ -142,6 +141,7 @@ const App = () => {
       </Row>
       <Row>
         <Button variant="outline" type="submit">
+
           {isSubmitted ? "Un-Submit" : "Submit"}
         </Button>
       </Row>
