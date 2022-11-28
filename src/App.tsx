@@ -7,82 +7,17 @@ import {
   Dropdown,
   RadioSelectionCard,
   Text,
-  Textarea,
 } from "@soluto-private/mx-asurion-ui-react";
-
-// Styled-Components
-
-const StyledButton = styled(Button)<{ isSubmitted: boolean }>`
-  color: ${(props) => (props.isSubmitted ? "#3EB489" : "palevioletred")};
-`;
-
-const StyledForm = styled.form`
-  margin-left: 1rem;
-  margin-right: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media (min-width: 1056px) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1024px;
-  }
-`;
-
-const StyledCallout = styled(Callout).attrs({ iconSrc: "Smiley" })`
-  background-color: papayawhip;
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  gap: 1rem;
-`;
-
-const handleBackground = (val1: string, val2: string) => {
-  if (val1 && val2) return "#3EB489";
-  else if (val1 || val2) return "yellow";
-  else return "palevioletred";
-};
-
-const FormCard = styled(DeviceCard)`
-  background: ${(props) => handleBackground(props.value1, props.value2)};
-`;
-
-const SectionHeader = styled(Text).attrs({ size: 3, weight: "heavy" })``;
-
-const StyledTextarea = styled(Textarea)`
-  min-width: 500px;
-`;
-
-// Radio Group Options
-
-const workOptions = [
-  { name: "Nashville", value: "Nashville" },
-  { name: "Sterling", value: "Sterling" },
-  { name: "Remote", value: "Remote" },
-];
-const preferenceOptions = [
-  { name: "In-Person", value: "In-Person" },
-  { name: "Hybrid", value: "Hybrid" },
-  { name: "Remote", value: "Remote" },
-];
+import { workOptions, preferenceOptions } from "./data";
+import { StyledForm, Row, SectionHeader, StyledTextarea } from "./elements";
 
 const App = () => {
-  // form values
   const [workLocation, setWorkLocation] = useState("");
   const [workPreference, setWorkPreference] = useState("");
   const [favIceCream, setFavIceCream] = useState("");
   const [favPizza, setFavPizza] = useState("");
   const [recentVacation, setRecentVacation] = useState("");
   const [favoriteVacation, setFavoriteVacation] = useState("");
-
-  // form state
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.SyntheticEvent) => {
@@ -100,29 +35,14 @@ const App = () => {
       <Text size={8} weight="heavy" as="h1">
         This is a Form
       </Text>
-      <StyledCallout
+      <Callout
         content="This is a nonsensical page complete with a form. This is not up to par with Asurion design standards, and you should not design things like this"
         heading="Hello, Everyone!"
       />
       <Row>
-        <FormCard
-          value1={workLocation}
-          value2={workPreference}
-          iconSrc="Laptop"
-          primary="Work"
-        />
-        <FormCard
-          value1={favPizza}
-          value2={favIceCream}
-          iconSrc="Stove"
-          primary="Food"
-        />
-        <FormCard
-          iconSrc="Share"
-          primary="Travel"
-          value1={recentVacation}
-          value2={favoriteVacation}
-        />
+        <DeviceCard iconSrc="Laptop" primary="Work" />
+        <DeviceCard iconSrc="Stove" primary="Food" />
+        <DeviceCard iconSrc="Share" primary="Travel" />
       </Row>
       <Row>
         <SectionHeader>Work Preferences</SectionHeader>
@@ -220,9 +140,10 @@ const App = () => {
         />
       </Row>
       <Row>
-        <StyledButton variant="outline" type="submit" isSubmitted={isSubmitted}>
+        <Button variant="outline" type="submit">
+
           {isSubmitted ? "Un-Submit" : "Submit"}
-        </StyledButton>
+        </Button>
       </Row>
     </StyledForm>
   );
