@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 import {
   Button,
   Callout,
@@ -19,10 +18,6 @@ const App = () => {
   const [recentVacation, setRecentVacation] = useState("");
   const [favoriteVacation, setFavoriteVacation] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleDeviceCardClick = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-  };
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
