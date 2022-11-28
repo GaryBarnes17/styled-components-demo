@@ -9,6 +9,7 @@ import {
 } from "@soluto-private/mx-asurion-ui-react";
 import { workOptions, preferenceOptions } from "./data";
 import { StyledForm, Row, SectionHeader, StyledTextarea } from "./elements";
+import styled from "styled-components";
 
 const App = () => {
   const [workLocation, setWorkLocation] = useState("");
@@ -29,19 +30,57 @@ const App = () => {
     setIsSubmitted(!isSubmitted);
   };
 
+  const StyledCallout = styled(Callout)`
+    background-color: papayawhip;
+  `;
+
+  const handleBackgroundColor = (value1: string, value2: string) => {
+    if (value1 && value2) return "seagreen";
+    else if (value1 || value2) return "gold";
+    return "palevioletred";
+  };
+
+  const FormCard = styled(DeviceCard).attrs({ element: "div" })`
+    background-color: ${({ value1, value2 }) =>
+      handleBackgroundColor(value1, value2)};
+  `;
+
+  type StyledButtonProps = {
+    isSubmitted: boolean;
+  };
+
+  const StyledButton = styled(Button)<StyledButtonProps>`
+    color: ${(props) => (props.isSubmitted ? "palevioletred" : "seagreen")};
+  `;
+
   return (
     <StyledForm onSubmit={handleSubmit}>
       <Text size={8} weight="heavy" as="h1">
         This is a Form
       </Text>
-      <Callout
+      <StyledCallout
         content="This is a nonsensical page complete with a form. This is not up to par with Asurion design standards, and you should not design things like this"
         heading="Hello, Everyone!"
       />
       <Row>
-        <DeviceCard iconSrc="Laptop" primary="Work" element="div" />
-        <DeviceCard iconSrc="Stove" primary="Food" element="div" />
-        <DeviceCard iconSrc="Share" primary="Travel" element="div" />
+        <FormCard
+          iconSrc="Laptop"
+          primary="Work"
+          value1={workLocation}
+          value2={workPreference}
+        />
+        <FormCard
+          iconSrc="Stove"
+          primary="Food"
+          value1={favIceCream}
+          value2={favPizza}
+        />
+        <FormCard
+          iconSrc="Share"
+          primary="Travel"
+          value1={recentVacation}
+          value2={favoriteVacation}
+        />
       </Row>
       <Row>
         <SectionHeader>Work Preferences</SectionHeader>
@@ -139,9 +178,9 @@ const App = () => {
         />
       </Row>
       <Row>
-        <Button variant="outline" type="submit">
+        <StyledButton isSubmitted={isSubmitted} variant="outline" type="submit">
           {isSubmitted ? "Un-Submit" : "Submit"}
-        </Button>
+        </StyledButton>
       </Row>
     </StyledForm>
   );
