@@ -20,6 +20,10 @@ const App = () => {
   const [favoriteVacation, setFavoriteVacation] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const handleDeviceCardClick = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+  };
+
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     alert(
@@ -40,9 +44,9 @@ const App = () => {
         heading="Hello, Everyone!"
       />
       <Row>
-        <DeviceCard iconSrc="Laptop" primary="Work" />
-        <DeviceCard iconSrc="Stove" primary="Food" />
-        <DeviceCard iconSrc="Share" primary="Travel" />
+        <DeviceCard iconSrc="Laptop" primary="Work" element="div" />
+        <DeviceCard iconSrc="Stove" primary="Food" element="div" />
+        <DeviceCard iconSrc="Share" primary="Travel" element="div" />
       </Row>
       <Row>
         <SectionHeader>Work Preferences</SectionHeader>
@@ -141,7 +145,6 @@ const App = () => {
       </Row>
       <Row>
         <Button variant="outline" type="submit">
-
           {isSubmitted ? "Un-Submit" : "Submit"}
         </Button>
       </Row>
