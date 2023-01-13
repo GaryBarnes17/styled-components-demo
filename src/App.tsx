@@ -20,8 +20,10 @@ const App = () => {
   return (
     <StyledRadio showCircle={false}>
       <Container>
-        <Text>Mon</Text>
-        <Text color={colors.neutralDeeper}>8/12</Text>
+        <Text size={2}>Mon</Text>
+        <Text size={1} color={colors.neutralDeeper}>
+          8/12
+        </Text>
       </Container>
     </StyledRadio>
   );
