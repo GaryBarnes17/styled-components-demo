@@ -2,9 +2,10 @@ import {
   Feedback,
   CheckedValueType,
   CheckedValue,
-  FeedbackVariant,
+  StarRating,
 } from "@soluto-private/mx-asurion-ui-react";
 import React, { useState } from "react";
+import styled from "styled-components";
 
 const App = () => {
   const [feedbackVal, setFeedbackVal] = useState<CheckedValueType>(
@@ -12,15 +13,12 @@ const App = () => {
   );
   return (
     <>
-      <Feedback
-        value={feedbackVal}
-        variant={FeedbackVariant.CHECK}
-        onClick={(e: React.MouseEvent) => {
-          const { value } = e.target as HTMLInputElement;
-          feedbackVal === value
-            ? setFeedbackVal(CheckedValue.UNSELECTED)
-            : setFeedbackVal(value as CheckedValueType);
-        }}
+      <StarRating
+        color="default"
+        label="100+"
+        tooltip="See tooltip"
+        value={3.2}
+        variant="static"
       />
     </>
   );
