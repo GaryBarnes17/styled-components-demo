@@ -1,24 +1,26 @@
-import {
-  Feedback,
-  CheckedValueType,
-  CheckedValue,
-  StarRating,
-} from "@soluto-private/mx-asurion-ui-react";
+import { Drawer, Button } from "@soluto-private/mx-asurion-ui-react";
 import React, { useState } from "react";
 import styled from "styled-components";
 
 const App = () => {
-  const [feedbackVal, setFeedbackVal] = useState<CheckedValueType>(
-    CheckedValue.UNSELECTED
-  );
+  const [isOpen, setIsOpen] = useState(true);
   return (
     <>
-      <StarRating
-        color="default"
-        label="100+"
-        tooltip="See tooltip"
-        value={3.2}
-        variant="static"
+      <Button onClick={() => setIsOpen(true)}>Show Drawer</Button>
+      <Drawer
+        footer={{
+          primaryButton: {
+            children: "Foo",
+          },
+          secondaryButton: {
+            children: "Bar",
+            variant: "outline",
+          },
+          view: "two",
+        }}
+        imgSrc="https://assets.asurion-ui.my.asurion53.com/images/stories/aui-story-img.jpg"
+        onOpenUpdate={(open) => setIsOpen(open)}
+        open={isOpen}
       />
     </>
   );
