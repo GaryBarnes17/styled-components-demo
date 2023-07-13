@@ -1,25 +1,46 @@
-import {
-  Feedback,
-  CheckedValueType,
-  CheckedValue,
-  StarRating,
-} from "@soluto-private/mx-asurion-ui-react";
-import React, { useState } from "react";
+import { useState } from "react";
+import { Tabs, Button } from "@soluto-private/mx-asurion-ui-react";
 import styled from "styled-components";
 
+const StyledTabs = styled(Tabs)`
+  padding-bottom: 1rem !important;
+
+  button {
+    color: purple;
+  }
+`;
+
 const App = () => {
-  const [feedbackVal, setFeedbackVal] = useState<CheckedValueType>(
-    CheckedValue.UNSELECTED
-  );
+  const [tabIndex, setTabIndex] = useState(0);
+
   return (
     <>
-      <StarRating
-        color="default"
-        label="100+"
-        tooltip="See tooltip"
-        value={3.2}
-        variant="static"
+      <StyledTabs
+        activeTabIndex={tabIndex}
+        onChange={({ value }) => setTabIndex(value)}
+        tabs={[
+          {
+            iconSrc: "IconPlaceholder",
+            title: "Nav Item",
+          },
+          {
+            iconSrc: "IconPlaceholder",
+            title: "Nav Item",
+          },
+          {
+            iconSrc: "IconPlaceholder",
+            title: "Nav Item",
+          },
+        ]}
       />
+      <Button
+        onClick={() => {
+          if (tabIndex === 2) setTabIndex(0);
+          else setTabIndex(tabIndex + 1);
+        }}
+      >
+        Increment
+      </Button>
     </>
   );
 };
