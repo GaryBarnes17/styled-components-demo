@@ -1,5 +1,5 @@
 import { Text } from "@soluto-private/mx-asurion-ui-react";
-import styled from "styled-components";
+import { styled } from "styled-components";
 
 const Container = styled.div``;
 
