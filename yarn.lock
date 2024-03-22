@@ -333,15 +333,22 @@
   dependencies:
     idb-keyval "^6.2.0"
 
-"@soluto-private/mx-asurion-ui-react@file:../asurion-ui/asurion-ui-react":
-  version "4.0.0-beta.8"
+"@soluto-private/aui-tokens@*":
+  version "1.4.0"
+  resolved "https://npm.pkg.github.com/download/@soluto-private/aui-tokens/1.4.0/915464b40723959924ed53607bf2ad5ced8c9ea6#915464b40723959924ed53607bf2ad5ced8c9ea6"
+  integrity sha512-tkee23iebG/LF/Tey22ytPKa3CVEkVH1Ps/B+xXk+Fn9kzUqx0DslA8n96bkLqxM7I7Nh6q2blRK8Ft1tC9QRQ==
+
+"@soluto-private/mx-asurion-ui-react@4.11.0":
+  version "4.11.0"
+  resolved "https://npm.pkg.github.com/download/@Soluto-Private/mx-asurion-ui-react/4.11.0/2ab3e60a3571927da9ba48acaed91fd8a4bc4425#2ab3e60a3571927da9ba48acaed91fd8a4bc4425"
+  integrity sha512-rJpFn+amn3TE6OorGotTvD6s60MQNo+GuVt/9LW6Mti2CtIy3HY6Bxp3qK0Q1ccLljIbjfKdn/ARqS4YpwlYnA==
   dependencies:
     "@emotion/is-prop-valid" "^1.2.1"
     "@hassanmojab/react-modern-calendar-datepicker" "^3.1.6"
     "@soluto-private/aui-external-svg-loader" "*"
+    "@soluto-private/aui-tokens" "*"
     css.escape "^1.5.1"
     react-transition-group "^4.4.2"
-    single-spa "^5.9.3"
 
 "@types/hoist-non-react-statics@*":
   version "3.3.1"
@@ -949,11 +956,6 @@ shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
-
-single-spa@^5.9.3:
-  version "5.9.4"
-  resolved "https://registry.yarnpkg.com/single-spa/-/single-spa-5.9.4.tgz#2a995b0784867a3f60ceb458de295ee67f045077"
-  integrity sha512-QkEoh0AzGuU82qnbUUk0ydF78QbU5wMKqKKJn7uUQfBiOYlRQEfIOpLM4m23Sab+kTOLI1kbYhYeiQ7fX5KVVw==
 
 sirv@^1.0.7:
   version "1.0.19"

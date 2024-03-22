@@ -11,7 +11,7 @@
     "refresh": "rm -rf node_modules && yarn && yarn start"
   },
   "dependencies": {
-    "@soluto-private/mx-asurion-ui-react": "file:../asurion-ui/asurion-ui-react",
+    "@soluto-private/mx-asurion-ui-react": "4.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "*",
