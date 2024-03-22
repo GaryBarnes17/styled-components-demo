@@ -338,10 +338,10 @@
   resolved "https://npm.pkg.github.com/download/@soluto-private/aui-tokens/1.4.0/915464b40723959924ed53607bf2ad5ced8c9ea6#915464b40723959924ed53607bf2ad5ced8c9ea6"
   integrity sha512-tkee23iebG/LF/Tey22ytPKa3CVEkVH1Ps/B+xXk+Fn9kzUqx0DslA8n96bkLqxM7I7Nh6q2blRK8Ft1tC9QRQ==
 
-"@soluto-private/mx-asurion-ui-react@4.11.0":
-  version "4.11.0"
-  resolved "https://npm.pkg.github.com/download/@Soluto-Private/mx-asurion-ui-react/4.11.0/2ab3e60a3571927da9ba48acaed91fd8a4bc4425#2ab3e60a3571927da9ba48acaed91fd8a4bc4425"
-  integrity sha512-rJpFn+amn3TE6OorGotTvD6s60MQNo+GuVt/9LW6Mti2CtIy3HY6Bxp3qK0Q1ccLljIbjfKdn/ARqS4YpwlYnA==
+"@soluto-private/mx-asurion-ui-react@*":
+  version "4.11.8"
+  resolved "https://npm.pkg.github.com/download/@Soluto-Private/mx-asurion-ui-react/4.11.8/b5d1b0a0e68d7bac847901c82dbf5647c0c6f3b7#b5d1b0a0e68d7bac847901c82dbf5647c0c6f3b7"
+  integrity sha512-vyAkYjTQzpIxV4/lCRlpLPXvK3+MSwPdIzVQmZC9COm3OBPs3PgdyYAE5vWFwD5i9JUl+iuzIE90xBlPxHNMKA==
   dependencies:
     "@emotion/is-prop-valid" "^1.2.1"
     "@hassanmojab/react-modern-calendar-datepicker" "^3.1.6"
